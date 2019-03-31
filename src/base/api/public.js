@@ -1,4 +1,5 @@
 require('es6-promise').polyfill()
+//http 请求类库
 import axios from 'axios'
 
 axios.defaults.withCredentials = true //跨域
