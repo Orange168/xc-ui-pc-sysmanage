@@ -64,7 +64,7 @@
         pageId: '',
         //模版列表
         templateList: [],
-        addLoading: true,//加载效果标记
+        addLoading: false,//加载效果标记
         //新增界面数据
         pageForm: {
           siteId: '',

@@ -28,19 +28,20 @@ let Base64 = require('js-base64').Base64;
 let sysConfig = require('@/../config/sysConfig')
 let openAuthenticate = sysConfig.openAuthenticate
 let openAuthorize = sysConfig.openAuthorize
-
+let systemApi =  require('@/base/api/system')
 Vue.use(vueResource);
 /* eslint-disable no-new */
 const router = new VueRouter({
   routes:routes
 })
-/*
+
 router.beforeEach((to, from, next) => {
   if(openAuthenticate){
 
     // console.log(to)
     // console.log(from)
     //!***********身份校验***************
+    debugger
     let activeUser
     let uid
     try{
@@ -54,14 +55,13 @@ router.beforeEach((to, from, next) => {
     }else if(to.path =='/login' || to.path =='/logout'){
       next();
     }else if(uid){
-
       //请求获取jwt
       systemApi.getjwt().then((res)=>{
         if(res.success){
           let jwt = res.jwt;
           let activeUser = utilApi.getUserInfoFromJwt(jwt)
           if(activeUser){
-            utilApi.setUserSession("activeUser",JSON.stringify(activeUser))
+            utilApi.setSession("activeUser",JSON.stringify(activeUser))
           }
           next();
         }else{
@@ -77,7 +77,8 @@ router.beforeEach((to, from, next) => {
     next();
   }
 
-});*/
+});
+
 //授权
 // router.afterEach((to, from, next) => {
 //   if(openAuthorize){
@@ -102,7 +103,7 @@ router.beforeEach((to, from, next) => {
 import axios from 'axios'
 import { Message } from 'element-ui';
 
-/*// 添加请求拦截器
+// 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求向header添加jwt
   let jwt = utilApi.getJwt()
@@ -132,7 +133,7 @@ axios.interceptors.response.use(data => {
     }
   }
   return data
-})*/
+})
 
 new Vue({
   el: '#app',
