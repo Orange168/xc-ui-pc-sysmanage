@@ -35,49 +35,48 @@ const router = new VueRouter({
   routes:routes
 })
 
-router.beforeEach((to, from, next) => {
-  if(openAuthenticate){
-
-    // console.log(to)
-    // console.log(from)
-    //!***********身份校验***************
-    debugger
-    let activeUser
-    let uid
-    try{
-      activeUser = utilApi.getActiveUser()
-      uid = utilApi.getCookie("uid")
-    }catch(e){
-      //alert(e)
-    }
-    if(activeUser && uid && uid == activeUser.uid) {
-      next();
-    }else if(to.path =='/login' || to.path =='/logout'){
-      next();
-    }else if(uid){
-      //请求获取jwt
-      systemApi.getjwt().then((res)=>{
-        if(res.success){
-          let jwt = res.jwt;
-          let activeUser = utilApi.getUserInfoFromJwt(jwt)
-          if(activeUser){
-            utilApi.setSession("activeUser",JSON.stringify(activeUser))
-          }
-          next();
-        }else{
-          //跳转到统一登陆
-          window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
-        }
-      })
-    }else{
-      //跳转到统一登陆
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
-    }
-  }else{
-    next();
-  }
-
-});
+// router.beforeEach((to, from, next) => {
+//   if(openAuthenticate){
+//
+//     // console.log(to)
+//     // console.log(from)
+//     //!***********身份校验***************
+//     let activeUser
+//     let uid
+//     try{
+//       activeUser = utilApi.getActiveUser()
+//       uid = utilApi.getCookie("uid")
+//     }catch(e){
+//       //alert(e)
+//     }
+//     if(activeUser && uid && uid == activeUser.uid) {
+//       next();
+//     }else if(to.path =='/login' || to.path =='/logout'){
+//       next();
+//     }else if(uid){
+//       //请求获取jwt
+//       systemApi.getjwt().then((res)=>{
+//         if(res.success){
+//           let jwt = res.jwt;
+//           let activeUser = utilApi.getUserInfoFromJwt(jwt)
+//           if(activeUser){
+//             utilApi.setSession("activeUser",JSON.stringify(activeUser))
+//           }
+//           next();
+//         }else{
+//           //跳转到统一登陆
+//           window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
+//         }
+//       })
+//     }else{
+//       //跳转到统一登陆
+//       window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
+//     }
+//   }else{
+//     next();
+//   }
+//
+// });
 
 //授权
 // router.afterEach((to, from, next) => {
@@ -125,7 +124,7 @@ axios.interceptors.response.use(data => {
       //   path: '/login',
       //   query: {returnUrl: Base64.encode(window.location)}
       // })
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+      window.location = "http://ucenter.xuecheng.linz.tech/#/login?returnUrl="+ Base64.encode(window.location)
     }else if(data.data.code && data.data.code =='10002'){
       Message.error('您没有此操作的权限，请与客服联系！');
     }else if(data.data.code && data.data.code =='10003'){

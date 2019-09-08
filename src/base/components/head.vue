@@ -11,22 +11,22 @@
         </div>
       </el-col>-->
       <el-col :span="10" class="userinfo" v-if="this.logined">
-        <!--<el-dropdown trigger="hover">
-         <span class="el-dropdown-link userinfo-inner"><img :src="this.user.sysUserImg!=null?this.user.sysUserImg:'/static/images/small.jpg'"/> {{user.username}}</span>
+        <!--<el-dropdown trigger="hover">-->
+         <!--<span class="el-dropdown-link userinfo-inner"><img :src="this.user.sysUserImg!=null?this.user.sysUserImg:'/static/images/small.jpg'"/> {{user.username}}</span>-->
 
-          <el-dropdown-menu slot="dropdown">
-           <el-dropdown-item>我的消息</el-dropdown-item>
-           <el-dropdown-item>设置</el-dropdown-item>
-           <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
-         </el-dropdown-menu>
-       </el-dropdown>-->
+          <!--<el-dropdown-menu slot="dropdown">-->
+           <!--<el-dropdown-item>我的消息</el-dropdown-item>-->
+           <!--<el-dropdown-item>设置</el-dropdown-item>-->
+           <!--<el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>-->
+         <!--</el-dropdown-menu>-->
+       <!--</el-dropdown>-->
 
         <div class="nav">
 
             <div class="usermenu" >
               <span class="el-dropdown-link userinfo-inner"><img :src="this.user.sysUserImg!=null?this.user.sysUserImg:'/static/images/small.jpg'"/></span>
               欢迎您：{{user.username}}
-              <a href="http://www.xuecheng.com" target="_blank"><i class="el-icon-star-on"></i>首页</a>
+              <a href="http://xuecheng.linz.tech/" target="_blank"><i class="el-icon-star-on"></i>首页</a>
               <a href="javascript:;" @click="logout" :loading="editLoading"><i class="el-icon-circle-close"></i>退出</a>
             </div>
           </div>
@@ -60,18 +60,15 @@
         },
         logined:false,
         collapsed: false,
-
-
       }
     },
     methods: {
-
       //退出登录
       logout: function () {
         this.$confirm('确认退出吗?', '提示', {
         }).then(() => {
           //跳转到统一登陆
-          window.location = "http://ucenter.xuecheng.com/#/logout"
+          window.location = "http://ucenter.xuecheng.linz.tech/#/logout"
           /*const loading = this.$loading({
             lock: true,
             text: 'Loading',
@@ -97,20 +94,19 @@
       },
       refresh_user:function(){
         let activeUser= utilApi.getActiveUser();
-
         if(activeUser){
           this.logined = true
           this.user = activeUser;
-          //console.log(this.user.username)
+          console.log(this.user.username)
         }
       }
     },
     mounted() {
       this.refresh_user()
-
     }
   }
 </script>
+
 <style scoped lang="scss">
   @import '~scss_vars';
   .nav {

@@ -10,7 +10,7 @@
           :value="item.siteId">
         </el-option>
       </el-select>
-      页面别名：
+         页面别名：
       <el-input v-model="params.pageAliase" @keyup.enter="query" style="width: 100px"></el-input>
       <el-button type="primary" v-on:click="query" icon="el-icon-search">查询</el-button>
       <!--router-link是vue提供的路由功能，用于在页面生成路由链接，最终在html渲染后就是<a标签
@@ -75,7 +75,7 @@
         list: [],
         total: 0,
         params: { // UI 表单上面的数据要和此对应
-          page: 1,
+          page: 0,
           size: 10,
           siteId: "",
           siteName: ""
@@ -128,7 +128,7 @@
         });
       },
       preview:function (pageId) {
-        window.open("http://www.xuecheng.com/cms/preview/"+pageId)
+        window.open("http://xuecheng.linz.tech/cms/preview/"+pageId)
       },
       postPage:function (pageId) {
         this.$confirm('确认发布此页面吗？','提示',{
@@ -156,8 +156,12 @@
           siteName: "门户主站"
         },
         {
-          siteId: "102",
-          siteName: "测试2"
+          siteId: "5cfb2e936d9934701c72cf91",
+          siteName: "课程详情站点"
+        },
+        {
+          siteId:"",
+          siteName:"请选择站点"
         }
       ]
     }

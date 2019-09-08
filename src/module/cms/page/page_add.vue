@@ -81,7 +81,8 @@
           pageType: '',
           page:1,
           pageCreateTime: new Date()
-        },pageFormRules: {
+        },
+        pageFormRules: {
           siteId:[
             {required: true, message: '请选择站点', trigger: 'blur'}
           ],
@@ -123,6 +124,7 @@
         });
       },
       go_back(){
+
         this.$router.push({
           path: '/cms/page/list',
           query: {

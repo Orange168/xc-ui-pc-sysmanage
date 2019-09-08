@@ -5,7 +5,6 @@ let apiUrl = sysConfig.xcApiUrlPre;
 
 //页面查询
 export const page_list = (page,size,params) =>{
-
   let queryStr = querystring.stringify(params);
   //请求服务端的页面查询接口
   console.log(queryStr);

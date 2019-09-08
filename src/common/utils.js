@@ -84,7 +84,7 @@ export default {
       if (!authorities) {
         Message.error('对不起您没有此操作权限！');
         //跳转到统一授权失败页面
-        window.location = "http://ucenter.xuecheng.com/#/denied?returnUrl="+Base64.encode(window.location)
+        window.location = "http://ucenter.xuecheng.linz.tech/#/denied?returnUrl="+Base64.encode(window.location)
 /*        router.push({
           path: '/login'
         })*/
@@ -96,7 +96,7 @@ export default {
       if (!ret1) {
         Message.error('对不起您没有此操作权限！');
         //跳转到统一授权失败页面
-        window.location = "http://ucenter.xuecheng.com/#/denied?returnUrl="+Base64.encode(window.location)
+        window.location = "http://ucenter.xuecheng.linz.tech/#/denied?returnUrl="+Base64.encode(window.location)
         /*router.push({
           path: '/login'
         })*/
@@ -116,7 +116,6 @@ export default {
       }
     }
   },
-
   getCookie: function (name) {
     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
     if (arr = document.cookie.match(reg))
@@ -124,7 +123,6 @@ export default {
     else
       return null;
   },
-
   setCookie: function (c_name, value, expiredays) {
     var exdate = new Date();
     exdate.setDate(exdate.getDate() + expiredays);
