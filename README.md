@@ -2,6 +2,9 @@
 
 > xc-ui-pc-sysmanage
 
+## relationship springboot server 
+> ManageCmsApplication 31001
+
 ## Build Setup
 
 ``` bash
